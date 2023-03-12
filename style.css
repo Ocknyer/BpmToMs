@@ -1,0 +1,10 @@
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 300px;
+  margin: 100px auto;
+  border: 1px solid black;
+}
