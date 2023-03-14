@@ -13,8 +13,17 @@
   </head>
   <body>
     <div id="app">
-      <input type="number" class="bpm-input" />
-      <table>
+      <h1 class="title">BPM to MS</h1>
+      <div class="input-box">
+        <button class="bpm-up" onclick="bpmChange('increase')">
+          up
+        </button>
+        <input type="number" class="bpm-input" />
+        <button class="bpm-down" onclick="bpmChange('decrease')">
+          down
+        </button>
+      </div>
+      <table class="table">
         <tr>
           <th>BPM</th>
           <th>1/2</th>
