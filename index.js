@@ -18,12 +18,9 @@ const bpmDownBtn = document.querySelector('.bpm-down');
 
 const milisecond = 60000;
 
-inpBpm.addEventListener('keyup', (e) => {
-  const bpm = e.target.value;
-
+const calculation = (bpm) => {
   const baseBPM = milisecond / bpm;
 
-  outBpm.textContent = bpm;
   minim.textContent = Math.ceil(baseBPM) * 2 + 'ms';
   quarter.textContent = Math.ceil(baseBPM) + 'ms';
   eighthNote.textContent = Math.ceil(baseBPM / 2) + 'ms';
@@ -32,20 +29,32 @@ inpBpm.addEventListener('keyup', (e) => {
   demiSemiQuaver.textContent = Math.ceil(baseBPM / 8) + 'ms';
   hemiDemiSemiQuaver.textContent = Math.ceil(baseBPM / 16) + 'ms';
   oneHundredTwentyEight.textContent = Math.ceil(baseBPM / 32) + 'ms';
+
+  console.log(baseBPM);
+};
+
+inpBpm.addEventListener('keyup', (e) => {
+  const bpm = e.target.value;
+
+  outBpm.textContent = bpm;
+
+  calculation(bpm);
 });
 
-function bpmChange(type) {
-  let changedBPM = outBpm.textContent;
-
-  console.log(changedBPM);
+const bpmChange = (type) => {
+  let bpm = outBpm.textContent;
 
   if (type === 'increase') {
-    changedBPM = parseInt(changedBPM) + 1;
-    outBpm.textContent = changedBPM;
-    inpBpm.value = changedBPM;
+    bpm = parseInt(bpm) + 1;
+    outBpm.textContent = bpm;
+    inpBpm.value = bpm;
   } else if (type === 'decrease') {
-    changedBPM = parseInt(changedBPM) - 1;
-    outBpm.textContent = changedBPM;
-    inpBpm.value = changedBPM;
+    bpm = parseInt(bpm) - 1;
+    outBpm.textContent = bpm;
+    inpBpm.value = bpm;
   }
-}
+
+  console.log(bpm);
+
+  calculation(bpm);
+};
