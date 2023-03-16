@@ -18,7 +18,11 @@
         <button class="bpm-up" onclick="bpmChange('increase')">
           up
         </button>
-        <input type="number" class="bpm-input" />
+        <input
+          type="text"
+          class="bpm-input"
+          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+        />
         <button class="bpm-down" onclick="bpmChange('decrease')">
           down
         </button>

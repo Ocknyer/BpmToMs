@@ -30,7 +30,16 @@ const calculation = (bpm) => {
   hemiDemiSemiQuaver.textContent = Math.ceil(baseBPM / 16) + 'ms';
   oneHundredTwentyEight.textContent = Math.ceil(baseBPM / 32) + 'ms';
 
-  console.log(baseBPM);
+  if (bpm === 0) {
+    minim.textContent = '-';
+    quarter.textContent = '-';
+    eighthNote.textContent = '-';
+    eightDotted.textContent = '-';
+    semiQuaver.textContent = '-';
+    demiSemiQuaver.textContent = '-';
+    hemiDemiSemiQuaver.textContent = '-';
+    oneHundredTwentyEight.textContent = '-';
+  }
 };
 
 inpBpm.addEventListener('keyup', (e) => {
@@ -38,23 +47,23 @@ inpBpm.addEventListener('keyup', (e) => {
 
   outBpm.textContent = bpm;
 
-  calculation(bpm);
+  if (bpm) {
+    calculation(bpm);
+  }
 });
 
 const bpmChange = (type) => {
   let bpm = outBpm.textContent;
 
-  if (type === 'increase') {
+  if (type === 'increase' && bpm >= 0) {
     bpm = parseInt(bpm) + 1;
     outBpm.textContent = bpm;
     inpBpm.value = bpm;
-  } else if (type === 'decrease') {
+    calculation(bpm);
+  } else if (type === 'decrease' && bpm > 0) {
     bpm = parseInt(bpm) - 1;
     outBpm.textContent = bpm;
     inpBpm.value = bpm;
+    calculation(bpm);
   }
-
-  console.log(bpm);
-
-  calculation(bpm);
 };
