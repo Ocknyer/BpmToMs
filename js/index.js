@@ -55,6 +55,12 @@ inpBpm.addEventListener('keyup', (e) => {
 const bpmChange = (type) => {
   let bpm = outBpm.textContent;
 
+  if (type === 'increase' && !inpBpm.value) {
+    bpm = 1;
+    outBpm.textContent = bpm;
+    inpBpm.value = bpm;
+  }
+
   if (type === 'increase' && bpm >= 0) {
     bpm = parseInt(bpm) + 1;
     outBpm.textContent = bpm;
