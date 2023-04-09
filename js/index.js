@@ -62,7 +62,7 @@ const bpmChange = (type) => {
   }
 
   if (type === 'increase' && bpm >= 0) {
-    bpm = parseInt(bpm) + 1;
+    bpm = parseInt(bpm) + 1;1
     outBpm.textContent = bpm;
     inpBpm.value = bpm;
     calculation(bpm);
